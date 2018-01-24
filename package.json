@@ -1,0 +1,28 @@
+{
+  "name": "catbox-fallback-tractr",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/lab/bin/lab -a code -v -L -t 100",
+    "test-cov-html": "./node_modules/lab/bin/lab -a code -r html -o coverage.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/tractrs/catbox-fallback-tractr.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/tractrs/catbox-fallback-tractr#readme",
+  "dependencies": {
+    "boom": "^7.1.1",
+    "catbox": "^10.0.2",
+    "catbox-memcached": "^1.1.1",
+    "catbox-memory": "^3.1.1",
+    "catbox-mongodb": "^4.0.0",
+    "catbox-redis": "^4.0.0",
+    "code": "^5.1.2",
+    "hoek": "^5.0.2",
+    "lab": "^15.2.0"
+  }
+}
