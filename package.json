@@ -17,10 +17,7 @@
   "dependencies": {
     "boom": "^7.1.1",
     "catbox": "^10.0.2",
-    "catbox-memcached": "^1.1.1",
     "catbox-memory": "^3.1.1",
-    "catbox-mongodb": "^4.0.0",
-    "catbox-redis": "^4.0.0",
     "code": "^5.1.2",
     "hoek": "^5.0.2",
     "lab": "^15.2.0"
