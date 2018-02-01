@@ -300,6 +300,48 @@ describe('Fallback', () => {
         expect(ready).to.equal(true);
     });
 
+    it('should be ready if primary engine is down', async (done) => {
+
+        const client = new Catbox.Client(CatboxFallback, {
+            primary: {
+                engine: CatboxFake,
+                options: { alwaysNotReady: true }
+            }, secondary: {
+                engine: CatboxFake,
+                options: { alwaysReady: true }
+            },
+            debug: true,
+            alwaysReady: false
+        });
+
+        await client.start();
+
+        const ready = client.isReady();
+
+        expect(ready).to.equal(true);
+    });
+
+    it('should be ready if secondary engine is down', async (done) => {
+
+        const client = new Catbox.Client(CatboxFallback, {
+            primary: {
+                engine: CatboxFake,
+                options: { alwaysReady: true }
+            }, secondary: {
+                engine: CatboxFake,
+                options: { alwaysNotReady: true }
+            },
+            debug: true,
+            alwaysReady: false
+        });
+
+        await client.start();
+
+        const ready = client.isReady();
+
+        expect(ready).to.equal(true);
+    });
+
     it('set should fail if both engines are down', async (done) => {
 
         const client = new Catbox.Client(CatboxFallback, {
