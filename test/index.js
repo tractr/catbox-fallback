@@ -10,10 +10,6 @@ const CatboxFallback = require('..');
 const CatboxMemory = require('catbox-memory');
 const CatboxFake = require('./fake-engine');
 
-// Declare internals
-
-const internals = {};
-
 // Test shortcuts
 
 const { describe, it } = exports.lab = Lab.script();
@@ -182,12 +178,14 @@ describe('Fallback', () => {
 
         const key = keys.default;
         const value = 'value';
+        const _ttl = 9999;
 
         await client.start();
-        await client.set(key, value, 9999);
+        await client.set(key, value, _ttl);
 
-        const { item } = await client.get(key);
+        const { item, ttl } = await client.get(key);
 
+        expect(ttl).to.most(_ttl);
         expect(item.item).to.equal(value);
         expect(item.origin).to.equal('primary');
     });
@@ -205,12 +203,14 @@ describe('Fallback', () => {
 
         const key = keys.default;
         const value = 'value';
+        const _ttl = 9999;
 
         await client.start();
-        await client.set(key, value, 9999);
+        await client.set(key, value, _ttl);
 
-        const { item } = await client.get(key);
+        const { item, ttl } = await client.get(key);
 
+        expect(ttl).to.most(_ttl);
         expect(item.item).to.equal(value);
         expect(item.origin).to.equal('primary');
 
@@ -235,12 +235,14 @@ describe('Fallback', () => {
 
         const key = keys.default;
         const value = 'value';
+        const _ttl = 9999;
 
         await client.start();
-        await client.set(key, value, 9999);
+        await client.set(key, value, _ttl);
 
-        const { item } = await client.get(key);
+        const { item, ttl } = await client.get(key);
 
+        expect(ttl).to.most(_ttl);
         expect(item.item).to.equal(value);
         expect(item.origin).to.equal('secondary');
     });
@@ -259,12 +261,14 @@ describe('Fallback', () => {
 
         const key = keys.default;
         const value = 'value';
+        const _ttl = 9999;
 
         await client.start();
-        await client.set(key, value, 9999);
+        await client.set(key, value, _ttl);
 
-        const { item } = await client.get(key);
+        const { item, ttl } = await client.get(key);
 
+        expect(ttl).to.most(_ttl);
         expect(item.item).to.equal(value);
         expect(item.origin).to.equal('secondary');
 
@@ -291,11 +295,12 @@ describe('Fallback', () => {
 
         const key = keys.default;
         const value = 'value';
+        const _ttl = 9999;
 
         await client.start();
 
         try {
-            await client.set(key, value, 9999);
+            await client.set(key, value, _ttl);
         }
         catch (err) {
             expect(err.message).to.equal('Disconnected');
@@ -368,9 +373,10 @@ describe('Fallback', () => {
 
         const key = keys.default;
         const value = 'value';
+        const _ttl = 9999;
 
         await client.start();
-        await client.set(key, value, 9999);
+        await client.set(key, value, _ttl);
 
         const { item } = await client.get(key);
 
@@ -389,9 +395,10 @@ describe('Fallback', () => {
 
         const key = keys.default;
         const value = 'value';
+        const _ttl = 9999;
 
         await client.start();
-        await client.set(key, value, 9999);
+        await client.set(key, value, _ttl);
 
         const { item } = await client.get(key);
 

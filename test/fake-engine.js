@@ -12,7 +12,7 @@ internals.defaults = {};
 
 exports = module.exports = internals.Connection = function (options) {
 
-    Hoek.assert(this.constructor === internals.Connection, 'Fallback client must be instantiated using new');
+    Hoek.assert(this.constructor === internals.Connection, 'Fake Engine client must be instantiated using new');
     Hoek.assert(!(options.alwaysNotReady && options.alwaysReady), 'Must set either alwaysReady or alwaysNotReady, not both');
 
     this.settings = Hoek.applyToDefaults(internals.defaults, options);
