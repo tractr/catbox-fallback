@@ -5,10 +5,10 @@
 const Catbox = require('catbox');
 const Code = require('code');
 const Lab = require('lab');
-const CatboxFallback = require('..');
+const CatboxFallback = require('../lib');
 
 const CatboxMemory = require('catbox-memory');
-const CatboxFake = require('./fake-engine');
+const CatboxFake = require('catbox-fake');
 
 // Test shortcuts
 
@@ -283,11 +283,9 @@ describe('Fallback', () => {
 
         const client = new Catbox.Client(CatboxFallback, {
             primary: {
-                engine: CatboxFake,
-                options: { alwaysReady: true }
+                engine: CatboxFake
             }, secondary: {
-                engine: CatboxFake,
-                options: { alwaysReady: true }
+                engine: CatboxFake
             },
             debug: true,
             alwaysReady: false
@@ -307,8 +305,7 @@ describe('Fallback', () => {
                 engine: CatboxFake,
                 options: { alwaysNotReady: true }
             }, secondary: {
-                engine: CatboxFake,
-                options: { alwaysReady: true }
+                engine: CatboxFake
             },
             debug: true,
             alwaysReady: false
@@ -325,8 +322,7 @@ describe('Fallback', () => {
 
         const client = new Catbox.Client(CatboxFallback, {
             primary: {
-                engine: CatboxFake,
-                options: { alwaysReady: true }
+                engine: CatboxFake
             }, secondary: {
                 engine: CatboxFake,
                 options: { alwaysNotReady: true }
@@ -487,79 +483,5 @@ describe('Fallback', () => {
         const { item } = await client.get(key);
 
         expect(item).to.equal(value);
-    });
-});
-
-describe('Fake', () => {
-
-    it('should start', async (done) => {
-
-        const client = new Catbox.Client(CatboxFake);
-
-        await client.start();
-
-        expect(client.isReady()).to.equal(true);
-    });
-
-    it('should stop', async (done) => {
-
-        const client = new Catbox.Client(CatboxFake);
-
-        await client.start();
-
-        expect(client.isReady()).to.equal(true);
-
-        await client.stop();
-
-        expect(client.isReady()).to.equal(false);
-    });
-
-    it('should restart', async (done) => {
-
-        const client = new Catbox.Client(CatboxFake);
-
-        await client.start();
-
-        expect(client.isReady()).to.equal(true);
-
-        await client.stop();
-
-        expect(client.isReady()).to.equal(false);
-
-        await client.start();
-
-        expect(client.isReady()).to.equal(true);
-    });
-
-    it('should not be ready if alwaysNotReady is true', async (done) => {
-
-        const client = new Catbox.Client(CatboxFake, { alwaysNotReady: true });
-
-        await client.start();
-
-        expect(client.isReady()).to.equal(false);
-    });
-
-    it('should be ready if alwaysReady is true', async (done) => {
-
-        const client = new Catbox.Client(CatboxFake, { alwaysReady: true });
-
-        await client.start();
-        await client.stop();
-
-        expect(client.isReady()).to.equal(true);
-    });
-
-    it('should fail if alwaysReady and alwaysNotReady are true', (done) => {
-
-        let client;
-        try {
-            client = new Catbox.Client(CatboxFake, { alwaysReady: true, alwaysNotReady: true });
-        }
-        catch (err) {
-            expect(err.message).to.equal('Must set either alwaysReady or alwaysNotReady, not both');
-        }
-
-        expect(client).to.equal(undefined);
     });
 });

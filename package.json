@@ -1,25 +1,34 @@
 {
-  "name": "catbox-fallback-tractr",
+  "name": "catbox-fallback",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Catbox engine allowing you to use two engines, a primary and a secondary, and if the primary is down, the secondary takes over.",
+  "main": "lib/index.js",
   "scripts": {
     "test": "./node_modules/lab/bin/lab -a code -v -L -t 100",
     "test-cov-html": "./node_modules/lab/bin/lab -a code -r html -o coverage.html"
   },
+  "keywords": [
+    "catbox",
+    "fallback",
+    "hapi"
+  ],
+  "author": "Simon Lévesque",
+  "license": "MIT",
+  "dependencies": {
+    "catbox": "^10.0.2",
+    "hoek": "^5.0.2"
+  },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@bitbucket.org/tractrs/catbox-fallback-tractr.git"
+    "url": "https://github.com/tractr/catbox-fallback.git"
   },
-  "author": "",
-  "license": "ISC",
-  "homepage": "https://bitbucket.org/tractrs/catbox-fallback-tractr#readme",
-  "dependencies": {
-    "boom": "^7.1.1",
-    "catbox": "^10.0.2",
+  "engines": {
+    "node": ">=8.9.0"
+  },
+  "devDependencies": {
     "catbox-memory": "^3.1.1",
+    "catbox-fake": "1.0.0",
     "code": "^5.1.2",
-    "hoek": "^5.0.2",
-    "lab": "^15.2.0"
+    "lab": "^15.2.1"
   }
 }
