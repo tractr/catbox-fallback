@@ -1,4 +1,4 @@
-# Catbox Fake
+# Catbox Fallback
 
 Catbox engine allowing you to use two engines, a primary and a secondary, and if the primary is down, the secondary takes over. After that, if the primary becomes ready it's gonna be used.
 
