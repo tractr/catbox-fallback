@@ -1,6 +1,6 @@
 {
   "name": "catbox-fallback",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Catbox engine allowing you to use two engines, a primary and a secondary, and if the primary is down, the secondary takes over.",
   "main": "lib/index.js",
   "scripts": {
