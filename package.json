@@ -27,7 +27,7 @@
   },
   "devDependencies": {
     "catbox-memory": "^3.1.1",
-    "catbox-fake": "1.0.0",
+    "catbox-fake": "^2.0.1",
     "code": "^5.1.2",
     "lab": "^15.2.1"
   }
