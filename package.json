@@ -1,6 +1,6 @@
 {
   "name": "catbox-fallback",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Catbox engine allowing you to use two engines, a primary and a secondary, and if the primary is down, the secondary takes over.",
   "main": "lib/index.js",
   "scripts": {
@@ -15,8 +15,8 @@
   "author": "Simon Lévesque",
   "license": "MIT",
   "dependencies": {
-    "catbox": "^10.0.2",
-    "hoek": "^5.0.2"
+    "catbox": "^10.0.5",
+    "hoek": "^6.0.4"
   },
   "repository": {
     "type": "git",
@@ -26,9 +26,9 @@
     "node": ">=8.9.0"
   },
   "devDependencies": {
-    "catbox-memory": "^3.1.1",
-    "catbox-fake": "^2.0.1",
-    "code": "^5.1.2",
-    "lab": "^15.2.1"
+    "catbox-memory": "^4.0.1",
+    "catbox-fake": "^2.0.3",
+    "code": "^5.2.4",
+    "lab": "^18.0.0"
   }
 }
