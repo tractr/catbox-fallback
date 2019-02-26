@@ -16,3 +16,7 @@ Current version: [![Current Version](https://img.shields.io/npm/v/catbox-fallbac
 - `secondary`
     - `engine` A Catbox engine of any kind.
     - `options` The options you want to pass to the engine.
+
+### Examples
+
+See [./examples](./examples)
