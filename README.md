@@ -19,4 +19,34 @@ Current version: [![Current Version](https://img.shields.io/npm/v/catbox-fallbac
 
 ### Examples
 
-See [./examples](./examples)
+Basic usage, Redis with Memory as fallback.
+
+```javascript
+const server = Hapi.server({
+    port: 3000,
+    host: 'localhost',
+    cache: {
+        name: 'fallback',
+        provider: {
+            constructor: require('catbox-fallback'),
+            options: {
+                primary: {
+                    engine: require('catbox-redis'),
+                    options: {
+                        partition: 'example',
+                        host: '127.0.0.1',
+                        port: 6379
+                    },
+                    timeout: 5000,
+                    recoveryDelay: 30000
+                },
+                secondary: {
+                    engine: require('catbox-memory')
+                }
+            }
+        }
+    }
+});
+```
+
+For more details, see [examples](./examples).

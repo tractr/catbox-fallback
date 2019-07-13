@@ -19,7 +19,9 @@ const server = Hapi.server({
                         partition: 'example',
                         host: '127.0.0.1',
                         port: 6379
-                    }
+                    },
+                    timeout: 5000,
+                    recoveryDelay: 30000
                 },
                 secondary: {
                     engine: CatboxMemory
