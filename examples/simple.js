@@ -18,11 +18,11 @@ const server = Hapi.server({
                     options: {
                         partition: 'example',
                         host: '127.0.0.1',
-                        port: 6379,
+                        port: 6379
                     }
                 },
                 secondary: {
-                    engine: CatboxMemory,
+                    engine: CatboxMemory
                 }
             }
         }
