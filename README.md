@@ -4,7 +4,7 @@ Catbox engine allowing you to use two engines, a primary and a secondary, and if
 
 Lead maintainer: [Simon Lévesque](https://github.com/simlevesque) and [Edouard Demotes-Mainard](https://github.com/EdouardDem)
 
-Current version: [![Current Version](https://img.shields.io/npm/v/catbox-fallback.svg)](https://www.npmjs.com/package/catbox-fallback) [![Build Status](https://travis-ci.org/Tractr/catbox-fallback.svg?branch=master)](https://travis-ci.org/Tractr/catbox-fallback)
+Current version: [![Current Version](https://img.shields.io/npm/v/catbox-fallback.svg)](https://www.npmjs.com/package/catbox-fallback)
 
 ### Options
 
