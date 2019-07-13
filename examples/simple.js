@@ -1,27 +1,28 @@
 'use strict';
 
 const Hapi = require('hapi');
-const Catbox = require('catbox');
-const CatboxFallback = require('catbox-fallback');
+const CatboxFallback = require('../lib');
 const CatboxRedis = require('catbox-redis');
 const CatboxMemory = require('catbox-memory');
 
 const server = Hapi.server({
     port: 3000,
     host: 'localhost',
-    cache:  new Catbox.Client(CatboxFallback, {
-            primary: {
-                engine: CatboxRedis({
-                    partition: 'examples',
-                    host: '127.0.0.1',
-                    port: '6379',
-                    password: ''
-                })
-            },
-            secondary: {
-                engine: CatboxMemory()
+    cache: {
+        name: 'fallback',
+        engine: CatboxFallback,
+        primary: {
+            engine: CatboxRedis,
+            options: {
+                partition: 'example',
+                host: '127.0.0.1',
+                port: 6379,
             }
-    })
+        },
+        secondary: {
+            engine: CatboxMemory,
+        }
+    }
 });
 
 const init = async () => {

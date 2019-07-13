@@ -4,6 +4,7 @@
   "description": "Catbox engine allowing you to use two engines, a primary and a secondary, and if the primary is down, the secondary takes over.",
   "main": "lib/index.js",
   "scripts": {
+    "example": "node ./examples/simple.js",
     "test": "./node_modules/lab/bin/lab -a code -v -L -t 100",
     "test-cov-html": "./node_modules/lab/bin/lab -a code -r html -o coverage.html"
   },
@@ -26,8 +27,10 @@
     "node": ">=8.9.0"
   },
   "devDependencies": {
-    "catbox-memory": "^4.0.1",
+    "catbox-redis": "^4.2.4",
     "catbox-fake": "^2.0.3",
+    "catbox-memory": "^4.0.1",
+    "hapi": "^17.8.5",
     "code": "^5.2.4",
     "lab": "^18.0.0"
   }
