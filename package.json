@@ -30,7 +30,7 @@
     "catbox-redis": "^4.2.4",
     "catbox-fake": "^2.0.3",
     "catbox-memory": "^4.0.1",
-    "hapi": "^17.8.5",
+    "hapi": "^18.1.0",
     "code": "^5.2.4",
     "lab": "^18.0.0"
   }

@@ -10,17 +10,21 @@ const server = Hapi.server({
     host: 'localhost',
     cache: {
         name: 'fallback',
-        engine: CatboxFallback,
-        primary: {
-            engine: CatboxRedis,
+        provider: {
+            constructor: CatboxFallback,
             options: {
-                partition: 'example',
-                host: '127.0.0.1',
-                port: 6379,
+                primary: {
+                    engine: CatboxRedis,
+                    options: {
+                        partition: 'example',
+                        host: '127.0.0.1',
+                        port: 6379,
+                    }
+                },
+                secondary: {
+                    engine: CatboxMemory,
+                }
             }
-        },
-        secondary: {
-            engine: CatboxMemory,
         }
     }
 });
@@ -29,11 +33,22 @@ const init = async () => {
 
     await server.start();
     console.log(`Server running at: ${server.info.uri}`);
+
+    // For testing purpose
+    // "Ping" cache engine
+    const cacheClient = server.cache({
+        cache: 'fallback',
+        shared: true,
+        expiresIn: 10,
+        segment: 'testing'
+    });
+    await cacheClient.set('test', { foo: 'bar' });
+    console.log('Cache test result: ', await cacheClient.get('test'));
 };
 
 process.on('unhandledRejection', (err) => {
 
-    console.log(err);
+    console.error(err);
     process.exit(1);
 });
 
